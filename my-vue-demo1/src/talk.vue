@@ -128,7 +128,7 @@
    }
 </script>
 
-<style scoped>   //界面风格
+<style scoped>   
    .hh{
      width: 500px;
   height: 200px

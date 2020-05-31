@@ -102,7 +102,7 @@
   }
 </script>
 
-<style scoped>   //界面风格
+<style scoped>   
    .hh{
      width: 200px
  },
