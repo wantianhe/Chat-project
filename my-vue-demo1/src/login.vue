@@ -34,19 +34,19 @@
   },
   methods: {
   submit() {
-  console.log(this.value1);
+  console.log(this.value1);  //所有控制台输出的都是调试时所用信息，以下皆是
   console.log(this.value2);
   
    let postData = this.$qs.stringify({
    'token' : this.value1,
    });
-    this.$axios({
+    this.$axios({           //用已有的会议号加入会议
     method: 'post',
     url:'/loginWithToken',
     data:postData
     }).then(res => {
 	console.log(res);
-    if(res.data["code"]== 0) {
+    if(res.data["code"]== 0) {    //后端返回正确码
       this.$message({
       message: '加入会议成功',
       type:'success'
@@ -59,18 +59,18 @@
       this.$message.error('网络错误');
     })
 
-  window.sessionStorage.setItem("RID",this.value1);
-  window.sessionStorage.setItem("UID",this.value2);
-  this.$router.push('/talk');
+  window.sessionStorage.setItem("RID",this.value1);   //存储用户名
+  window.sessionStorage.setItem("UID",this.value2);   //存储会议号
+  this.$router.push('/talk');   //跳转到聊天界面
 
   },
   open() {
   var _this = this;
-  this.$axios.get('/loginWithoutToken')
+  this.$axios.get('/loginWithoutToken')  //从后端获取会议号
   .then(res=>{
      console.log(res.data["code"]);
      if(res.data["code"]== 0) {
-	   window.sessionStorage.setItem("RID",res.data["token"]);
+	   window.sessionStorage.setItem("RID",res.data["token"]);  //把获得的会议号存储起来
 	   }else {
 		    this.$message.error('未知错误');
 			}
@@ -87,8 +87,8 @@
   type: 'success',
   message: '你的用户名是: ' + value,
   });
-  window.sessionStorage.setItem("UID",value);
-  _this.$router.push('/talk');
+  window.sessionStorage.setItem("UID",value);       //存储用户名
+  _this.$router.push('/talk');               //跳转到聊天界面
   }).catch(() => {
   this.$message({
   type: 'info',
@@ -102,7 +102,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped>   //界面风格
    .hh{
      width: 200px
  },
